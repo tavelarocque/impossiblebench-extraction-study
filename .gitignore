@@ -1,0 +1,9 @@
+.venv/
+repos/
+logs/
+__pycache__/
+.pytest_cache/
+# run-time output; the published results live in results/qwen3.5-9b/
+results/*/job_cache/
+results/qwen_*/
+results/smoke*/
