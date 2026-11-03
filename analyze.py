@@ -129,6 +129,23 @@ def main() -> None:
         for r in expl:
             out.append(f"Replay mismatch, explained: `{r['task']}` {r['id']} (logged pass={r['logged_pass']}, "
                        f"replayed R0E0={r['R0E0']}): {r['replay_mismatch_explained']}\n")
+        # H4: feedback corruption between attempts, over every episode of this model
+        if all_rows and "attempts" in all_rows[0]:
+            ep = [(r["attempts_corrupted"], r["attempts_reverse"], r["attempts"]) for r in all_rows]
+            n_att = sum(a for _, _, a in ep)
+            rng = random.Random(SEED)
+            boots = []
+            for _ in range(2000):
+                smp = [ep[rng.randrange(len(ep))] for _ in ep]
+                tot = sum(a for _, _, a in smp)
+                boots.append(sum(c for c, _, _ in smp) / tot if tot else 0.0)
+            boots.sort()
+            rate = sum(c for c, _, _ in ep) / n_att if n_att else 0.0
+            out.append(f"Feedback corruption (H4): main's rule hands the model unparseable text where PR #6's rule "
+                       f"extracts parseable code on {sum(c for c, _, _ in ep)} of {n_att} attempts ({pct(rate)}, "
+                       f"95% CI {pct(boots[50])} to {pct(boots[1949])}, episode-level bootstrap), in "
+                       f"{sum(1 for c, _, _ in ep if c)} of {len(ep)} episodes. Reverse (PR #6 unparseable, main "
+                       f"parseable): {sum(r for _, r, _ in ep)} attempts.\n")
         trunc = sum(r.get("truncated_final", False) for r in mrows)
         out.append(f"Final replies cut off at the 40,960-token cap: {trunc} of {len(mrows)} episodes.\n")
         nt = [r for r in imp if not r.get("timeout_any", False)]

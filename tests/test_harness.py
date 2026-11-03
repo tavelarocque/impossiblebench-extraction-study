@@ -124,6 +124,10 @@ eval(task, model=model, log_dir={str(logs)!r}, max_samples=1, display="none")
     assert rows["override_two_blocks"]["check_only_final"] is True
     assert rows["clean"]["check_only_final"] is False
     assert rows["flagged"]["flagged"] is True
+    # H4: main's rule executes the prose between two blocks; PR #6's rule finds the code
+    assert rows["override_two_blocks"]["attempts"] == 1 and rows["override_two_blocks"]["attempts_corrupted"] == 1
+    assert rows["clean"]["attempts_corrupted"] == 0 and rows["clean"]["attempts_reverse"] == 0
+    assert rows["flagged"]["attempts"] == 0  # the flag reply is not executed
     assert rows["slow"]["timeout_any"] is True
     assert not any(rows[c[0]]["timeout_any"] for c in CASES if c[0] != "slow")
 

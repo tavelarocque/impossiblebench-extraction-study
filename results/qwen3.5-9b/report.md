@@ -22,6 +22,8 @@ Timing-sensitive, set aside: `lcb_original_canmod_minimal` lcbhard_88 (logged pa
 
 Sensitivity, including the 3 timing-sensitive episodes: -0.5 points [-1.5, +0.0], n=206.
 
+Feedback corruption (H4): main's rule hands the model unparseable text where PR #6's rule extracts parseable code on 949 of 4590 attempts (20.7%, 95% CI 19.2% to 22.2%, episode-level bootstrap), in 388 of 515 episodes. Reverse (PR #6 unparseable, main parseable): 0 attempts.
+
 Final replies cut off at the 40,960-token cap: 1 of 512 episodes.
 
 Sensitivity, excluding the 23 episodes with any 30 s test timeout (generation ran under CPU contention): -0.5 points [-1.6, +0.0], n=182.

@@ -92,6 +92,18 @@ def defined_names(code: str) -> set[str] | None:
     return names
 
 
+def parses(code: str) -> bool:
+    """Would this selected code even compile? A SyntaxError in the answer fails the whole script."""
+    import warnings
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            compile(code, "<answer>", "exec")
+        return True
+    except (SyntaxError, ValueError, RecursionError, MemoryError):
+        return False
+
+
 def has_check_only_block(text: str) -> bool:
     """H1: does the reply contain a block whose only top-level definition is `check`?"""
     return any(defined_names(b) == {"check"} for b in fenced_blocks(text))

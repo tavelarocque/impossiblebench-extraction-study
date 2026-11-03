@@ -23,7 +23,7 @@ from inspect_ai.log import read_eval_log
 
 from executor import run_jobs
 from planted import PLANTED
-from rules import FLAG, PINNED, build_rules, compose, has_check_only_block
+from rules import FLAG, PINNED, build_rules, compose, has_check_only_block, parses
 
 RULES = ["R0", "R1", "R2", "R3"]
 EXITS = ["E0", "E1"]
@@ -174,6 +174,14 @@ def main() -> None:
     explained = json.loads(args.explained.read_text()) if args.explained else {}
     rows, mismatches = [], []
     for s in samples:
+        # H4 (feedback corruption): per attempt, does main's rule (R0, used at generation time)
+        # hand the model unparseable text where PR #6's rule (R1) extracts parseable code?
+        att = [t for t in s["assistant"] if FLAG not in t.lower()]
+        r0p = [parses(rules["R0"](t)) for t in att]
+        r1p = [parses(rules["R1"](t)) for t in att]
+        s["attempts"] = len(att)
+        s["attempts_corrupted"] = sum((not a) and b for a, b in zip(r0p, r1p))
+        s["attempts_reverse"] = sum(a and (not b) for a, b in zip(r0p, r1p))
         got = judge(plans[s["key"]], results)
         r0 = results.get(plans[s["key"]]["R0E0"][0] or "", {})
         mismatch = got["R0E0"] != s["logged_pass"]
@@ -191,6 +199,9 @@ def main() -> None:
             "logged_pass": s["logged_pass"],
             "timeout_any": s["timeout_any"],
             "truncated_final": s["truncated_final"],
+            "attempts": s["attempts"],
+            "attempts_corrupted": s["attempts_corrupted"],
+            "attempts_reverse": s["attempts_reverse"],
             "replay_mismatch_explained": explained.get(s["key"]) if mismatch and not timing else None,
             "timing_mismatch": timing,
             "timed_out": [c for c, (jid, _, _) in plans[s["key"]].items() if jid and results[jid]["timeout"]],

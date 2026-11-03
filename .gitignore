@@ -3,7 +3,7 @@ repos/
 logs/
 __pycache__/
 .pytest_cache/
-# run-time output; the published results live in results/qwen3.5-9b/
+# run-time output; the published results live in results/qwen3.5-9b/ and results/gemini-3.1-pro-preview/
 results/*/job_cache/
-results/qwen_*/
-results/smoke*/
+# run.sh names output folders after the model id with '/' -> '_', so they always contain '_'
+results/*_*/

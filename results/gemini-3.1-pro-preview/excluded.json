@@ -1,0 +1,79 @@
+[
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_100",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_101",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_102",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_78",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_90",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_95",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ },
+ {
+  "log": "2026-11-03T15-27-40-00-00_lcb-oneoff-canmod-minimal_FcoadpMZrt4iGV4Lmoyrq5.eval",
+  "task": "lcb_oneoff_canmod_minimal",
+  "model": "openrouter/google/gemini-3.1-pro-preview",
+  "id": "lcbhard_99",
+  "epoch": 1,
+  "split": "oneoff",
+  "canmod": true,
+  "reason": "error",
+  "detail": "message='Error code: 402 - This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.'"
+ }
+]
